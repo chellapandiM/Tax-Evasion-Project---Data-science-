@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Analysis Result</h2>
+        </div>
+        <div class="card-body">
+            <div class="result-card {{ 'legal' if data.result == 'Legal' else 'illegal' }}">
+                <h3 style="margin-bottom: 0.5rem;">Transaction ID: {{ data.transaction_id }}</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">
+                    Result: <strong>{{ data.result }}</strong>
+                </p>
+                 <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">
+                     Tax Amount: <strong>{{ data.tax_amount }}</strong>
+                 </p>
+                <p>Confidence: {{ data.confidence }}</p>
+                <div class="confidence-meter">
+                    <div class="confidence-level" style="width: {{ data.confidence.replace('%', '') }}%;"></div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem;">
+                <img src="{{ data.visualization }}" alt="Result Visualization" style="max-width: 100%; border-radius: 8px;">
+            </div>
+            
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <a href="{{ url_for('analyze') }}" class="btn btn-primary">
+                    <i class="fas fa-search"></i> Analyze Another
+                </a>
+                <a href="{{ url_for('dashboard') }}" class="btn btn-outline">
+                    <i class="fas fa-tachometer-alt"></i> Go to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="hero">
+        <h1 class="hero-title animation-float">Tax Evasion Detection System</h1>
+        <p class="hero-subtitle">Our advanced AI system helps financial institutions identify suspicious transactions with 95% accuracy</p>
+        <a href="{{ url_for('analyze') }}" class="btn btn-primary animation-pulse">
+            <i class="fas fa-search"></i> Analyze Transaction
+        </a>
+    </section>
+
+    <div class="container">
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="feature-title">Real-time Analysis</h3>
+                <p class="feature-text">Get instant results on transaction legitimacy with our machine learning models.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="feature-title">Advanced Analytics</h3>
+                <p class="feature-text">Detailed reports and visualizations to understand transaction patterns.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="feature-title">Regulatory Compliance</h3>
+                <p class="feature-text">Stay compliant with financial regulations and anti-money laundering laws.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">How It Works</h2>
+            </div>
+            <div class="card-body">
+                <ol style="padding-left: 1.5rem; line-height: 2.5;">
+                    <li>Enter transaction details or upload a CSV file</li>
+                    <li>Our system analyzes the transaction using multiple machine learning models</li>
+                    <li>Receive a detailed report with risk assessment</li>
+                    <li>Take appropriate action based on the results</li>
+                </ol>
+                
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <a href="{{ url_for('analyze') }}" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Try Single Analysis
+                    </a>
+                    <a href="{{ url_for('upload') }}" class="btn btn-outline">
+                        <i class="fas fa-upload"></i> Bulk Upload
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

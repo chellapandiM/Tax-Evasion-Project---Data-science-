@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Transaction Analysis</h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="{{ url_for('analyze') }}">
+                <div class="form-group">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="e.g., Jhon" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Age</label>
+                    <input type="number" class="form-control" name="age" placeholder="e.g., 23" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Country</label>
+                    <input type="text" class="form-control" name="country" placeholder="e.g., India" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">State</label>
+                    <input type="text" class="form-control" name="state" placeholder="e.g., Tamilnadu" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Amount</label>
+                    <input type="number" step="0.01" class="form-control" name="amount" placeholder="e.g., 1000000.00" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Transaction Type</label>
+                    <input type="text" class="form-control" name="transaction_type" placeholder="e.g., Offshore Transfer" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Person Involved (Optional)</label>
+                    <input type="text" class="form-control" name="person_involved" placeholder="e.g., Person_1101">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Industry (Optional)</label>
+                    <input type="text" class="form-control" name="industry" placeholder="e.g., Construction">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Destination Country (Optional)</label>
+                    <input type="text" class="form-control" name="destination_country" placeholder="e.g., USA">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Money Laundering Risk Score (1-10)</label>
+                    <input type="number" min="1" max="10" class="form-control" name="risk_score" value="5">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Shell Companies Involved (0-9)</label>
+                    <input type="number" min="0" max="9" class="form-control" name="shell_companies" value="0">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Financial Institution (Optional)</label>
+                    <input type="text" class="form-control" name="financial_institution" placeholder="e.g., Bank_40">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Tax Haven Country (Optional)</label>
+                    <input type="text" class="form-control" name="tax_haven" placeholder="e.g., Singapore">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Notes (Optional)</label>
+                    <textarea class="form-control" name="notes" rows="3"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i> Analyze Transaction
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

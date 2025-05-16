@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Taxpayer Statistics Finder</h2>
+    </div>
+    <div class="card-body">
+        <div class="filter-container">
+            <label for="country">Country:</label>
+            <select id="country" class="form-control" onchange="loadStates()">
+                <option value="">Select Country</option>
+                {% for country in ['India'] %}
+                    <option value="{{ country }}">{{ country }}</option>
+                {% endfor %}
+            </select>
+            
+            <label for="state">State:</label>
+            <select id="state" class="form-control" disabled onchange="getTaxCounts()">
+                <option value="">Select State</option>
+            </select>
+            
+            <div class="loader" id="state-loader"></div>
+        </div>
+        
+        <div class="result-box" id="result">
+            <i class="fas fa-info-circle" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
+            <p>Select a country and state to view taxpayer statistics</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Load states when country changes
+    function loadStates() {
+        const country = document.getElementById('country').value;
+        const stateSelect = document.getElementById('state');
+        const loader = document.getElementById('state-loader');
+        
+        stateSelect.innerHTML = '<option value="">Select State</option>';
+        stateSelect.disabled = !country;
+        
+        if (country) {
+            loader.style.display = 'block';
+            fetch(`/states?country=${country}`)
+                .then(res => res.json())
+                .then(states => {
+                    states.forEach(state => {
+                        const option = document.createElement('option');
+                        option.value = state;
+                        option.textContent = state;
+                        stateSelect.appendChild(option);
+                    });
+                    loader.style.display = 'none';
+                    stateSelect.disabled = false;
+                })
+                .catch(err => {
+                    console.error('Error loading states:', err);
+                    loader.style.display = 'none';
+                });
+        }
+    }
+
+    // Get tax counts when state is selected
+    function getTaxCounts() {
+        const country = document.getElementById('country').value;
+        const state = document.getElementById('state').value;
+        const resultDiv = document.getElementById('result');
+        
+        if (!country || !state) return;
+        
+        resultDiv.innerHTML = `
+            <div class="loader" style="margin-bottom: 1rem;"></div>
+            <p>Loading data...</p>
+        `;
+        
+        fetch('/tax-counts', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ country, state })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.error) {
+                resultDiv.innerHTML = `
+                    <i class="fas fa-exclamation-triangle" style="font-size: 2rem; color: var(--danger); margin-bottom: 1rem;"></i>
+                    <p>Error: ${data.error}</p>
+                `;
+            } else {
+                // Highlight numbers
+                const formatted = data.response.replace(
+                    /(\d+)/g, 
+                    '<span class="highlight">$1</span>'
+                );
+                resultDiv.innerHTML = `
+                    <i class="fas fa-chart-pie" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                    <strong>${data.filters.state}, ${data.filters.country}:</strong><br>
+                    ${formatted}
+                    <div style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                        <i class="fas fa-info-circle"></i> Estimated taxpayer and non-payer statistics
+                    </div>
+                `;
+            }
+        })
+        .catch(err => {
+            resultDiv.innerHTML = `
+                <i class="fas fa-exclamation-triangle" style="font-size: 2rem; color: var(--danger); margin-bottom: 1rem;"></i>
+                <p>Error fetching data</p>
+            `;
+        });
+    }
+</script>
+{% endblock %}

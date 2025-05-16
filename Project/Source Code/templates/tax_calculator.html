@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Indian Income Tax Calculator</h2>
+    </div>
+    <div class="card-body">
+        <form method="POST" action="{{ url_for('tax_calculator') }}">
+            <div class="form-group">
+                <label class="form-label">Annual Income (in Lakhs)</label>
+                <input type="number" step="0.01" class="form-control" name="income" required>
+                <small class="text-muted">e.g. 5.5 for ₹5,50,000</small>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Age Group</label>
+                <select class="form-control" name="age_group" required>
+                    <option value="general">Below 60 years</option>
+                    <option value="senior_citizen">60-80 years (Senior Citizen)</option>
+                    <option value="super_senior">Above 80 years (Super Senior Citizen)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Deductions (in Lakhs)</label>
+                <input type="number" step="0.01" class="form-control" name="deductions" value="0">
+                <small class="text-muted">Total of 80C, 80D, etc.</small>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Financial Year</label>
+                <select class="form-control" name="tax_year" required>
+                    {% for year in years %}
+                        <option value="{{ year }}" {% if year == years[0] %}selected{% endif %}>
+                            2023-24 (AY {{ year }}-{{ year+1 }})
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-calculator"></i> Calculate Tax
+            </button>
+        </form>
+        
+        <div style="margin-top: 2rem; padding: 1.5rem; background-color: #f8f9fa; border-radius: 8px;">
+            <h4>Current Tax Slabs (FY 2023-24)</h4>
+            <ul style="padding-left: 1.5rem; line-height: 2;">
+                <li><strong>General Taxpayers:</strong> 
+                    0% up to ₹3L, 5% (₹3-6L), 10% (₹6-9L), 15% (₹9-12L), 20% (₹12-15L), 30% above ₹15L</li>
+                <li><strong>Senior Citizens (60-80):</strong>
+                    0% up to ₹3L, 5% (₹3-5L), 20% (₹5-10L), 30% above ₹10L</li>
+                <li><strong>Super Seniors (80+):</strong>
+                    0% up to ₹5L, 20% (₹5-10L), 30% above ₹10L</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

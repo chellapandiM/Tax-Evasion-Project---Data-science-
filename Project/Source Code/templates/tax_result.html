@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Tax Calculation Result</h2>
+    </div>
+    <div class="card-body">
+        <div class="result-card">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                <div>
+                    <h4>Income Summary</h4>
+                    <table class="table">
+                        <tr>
+                            <td>Gross Income:</td>
+                            <td>{{ result.gross_income }}</td>
+                        </tr>
+                        <tr>
+                            <td>Deductions:</td>
+                            <td>{{ result.deductions }}</td>
+                        </tr>
+                        <tr>
+                            <td>Standard Deduction:</td>
+                            <td>{{ result.standard_deduction }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Taxable Income:</strong></td>
+                            <td><strong>{{ result.taxable_income }}</strong></td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div>
+                    <h4>Tax Details</h4>
+                    <table class="table">
+                        <tr>
+                            <td>Age Group:</td>
+                            <td>{{ result.age_group }}</td>
+                        </tr>
+                        <tr>
+                            <td>Financial Year:</td>
+                            <td>{{ result.tax_year }}-{{ result.tax_year|int + 1 }}</td>
+                        </tr>
+                        <tr>
+                            <td>Tax Before Rebate:</td>
+                            <td>₹{{ result.tax_amount.split('₹')[1].split('(')[0] }}</td>
+                        </tr>
+                        <tr>
+                            <td>Rebate (87A):</td>
+                            <td>{{ result.rebate }}</td>
+                        </tr>
+                        <tr>
+                            <td>Health & Education Cess (4%):</td>
+                            <td>{{ result.cess }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total Tax Owed:</strong></td>
+                            <td><strong>{{ result.tax_amount }}</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Effective Tax Rate:</td>
+                            <td>{{ result.effective_rate }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 2rem;">
+                <h4>Tax Breakdown</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Income Range</th>
+                            <th>Tax Rate</th>
+                            <th>Amount</th>
+                            <th>Tax</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in result.tax_breakdown %}
+                        <tr>
+                            <td>{{ item.range }}</td>
+                            <td>{{ item.rate }}</td>
+                            <td>{{ item.amount }}</td>
+                            <td>{{ item.tax }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+            <div style="margin-top: 2rem;">
+                <div class="progress" style="height: 20px; border-radius: 10px; background-color: #e9ecef;">
+                    <div class="progress-bar" role="progressbar" 
+                         style="width: {{ result.effective_rate }}%; background-color: #4361ee;"
+                         aria-valuenow="{{ result.effective_rate }}" 
+                         aria-valuemin="0" 
+                         aria-valuemax="100">
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 0.5rem;">Effective Tax Rate: {{ result.effective_rate }}</p>
+            </div>
+            
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <a href="{{ url_for('tax_calculator') }}" class="btn btn-primary">
+                    <i class="fas fa-redo"></i> Calculate Again
+                </a>
+                <a href="{{ url_for('dashboard') }}" class="btn btn-outline">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+Transaction ID,Country,Amount,Transaction Type,Date of Transaction,Person Involved,Industry,Destination Country,Reported by Authority,Source of Money,Money Laundering Risk Score,Shell Companies Involved,Financial Institution,Tax Haven Country
+TX1000000000,Germany,2068788.818935,Bank Transfer,2013-01-01 00:00:00,Person_5082,Mining,Switzerland,False,Illegal,1,8,Bank_351,Luxembourg
+TX1000000001,UK,1373634.554797,Cash Withdrawal,2013-01-01 01:00:00,Person_6144,Luxury Goods,Singapore,False,Illegal,9,2,Bank_372,Luxembourg
+TX1000000002,India,674445.958107,Cryptocurrency,2013-01-01 02:00:00,Person_4897,Construction,Panama,True,Illegal,10,5,Bank_294,Luxembourg
+TX1000000003,USA,1597970.508489,Stocks Transfer,2013-01-01 03:00:00,Person_9310,Luxury Goods,Russia,False,Illegal,9,2,Bank_312,Bahamas
+TX1000000004,UAE,3399838.060991,Bank Transfer,2013-01-01 04:00:00,Person_2743,Construction,Switzerland,False,Illegal,7,5,Bank_246,Switzerland
+TX1000000005,South Africa,696180.273709,Offshore Transfer,2013-01-01 05:00:00,Person_3275,Textiles,Luxembourg,False,Illegal,6,2,Bank_306,Luxembourg
+TX1000000006,USA,2392399.112811,Offshore Transfer,2013-01-01 06:00:00,Person_2965,Luxury Goods,Singapore,False,Illegal,7,5,Bank_416,Panama
+TX1000000007,USA,2775164.552696,Offshore Transfer,2013-01-01 07:00:00,Person_8709,Mining,Switzerland,True,Illegal,7,5,Bank_351,Panama
+TX1000000008,India,3576773.92165,Offshore Transfer,2013-01-01 08:00:00,Person_1864,Textiles,USA,True,Illegal,4,9,Bank_461,Luxembourg
+TX1000000009,UAE,2811200.782608,Offshore Transfer,2013-01-01 09:00:00,Person_8919,Mining,Singapore,True,Illegal,4,1,Bank_372,Switzerland
+TX1000000010,Brazil,4284917.449662,Cash Withdrawal,2013-01-01 10:00:00,Person_2581,Mining,South Africa,False,Illegal,4,10,Bank_255,Singapore
+TX1000000011,UK,2146037.38879,Offshore Transfer,2013-01-01 11:00:00,Person_1125,Oil & Gas,Panama,True,Illegal,3,7,Bank_416,Switzerland
+TX1000000012,Brazil,3484313.419022,Cash Withdrawal,2013-01-01 12:00:00,Person_5449,Textiles,Luxembourg,False,Illegal,9,6,Bank_210,Singapore
+TX1000000013,USA,3982426.594601,Stocks Transfer,2013-01-01 13:00:00,Person_5348,IT Services,Luxembourg,True,Illegal,9,2,Bank_351,Luxembourg
+TX1000000014,Mexico,452672.117199,Offshore Transfer,2013-01-01 14:00:00,Person_2996,Mining,South Africa,False,Illegal,8,5,Bank_318,Singapore
+TX1000000015,Japan,3367371.631463,Stocks Transfer,2013-01-01 15:00:00,Person_7851,Real Estate,Bahamas,True,Illegal,8,6,Bank_497,Bahamas
+TX1000000016,UAE,3766068.669442,Offshore Transfer,2013-01-01 16:00:00,Person_4587,IT Services,Luxembourg,True,Illegal,1,0,Bank_416,Singapore
+TX1000000017,China,4823346.895662,Stocks Transfer,2013-01-01 17:00:00,Person_4691,IT Services,Russia,False,Illegal,8,9,Bank_232,Singapore
+TX1000000018,China,423287.283815,Offshore Transfer,2013-01-01 18:00:00,Person_4442,IT Services,Panama,True,Illegal,4,0,Bank_232,Switzerland
+TX1000000019,China,4602431.543263,Offshore Transfer,2013-01-01 19:00:00,Person_4927,Textiles,Switzerland,False,Illegal,8,9,Bank_486,Singapore
+TX1000000020,Brazil,3857169.699339,Cryptocurrency,2013-01-01 20:00:00,Person_9131,Real Estate,Panama,False,Illegal,3,2,Bank_334,Luxembourg
+TX1000000021,Mexico,970683.778074,Offshore Transfer,2013-01-01 21:00:00,Person_7694,Textiles,Bahamas,True,Illegal,9,2,Bank_486,Luxembourg
+TX1000000022,UK,3729083.620025,Stocks Transfer,2013-01-01 22:00:00,Person_1605,Construction,Bahamas,False,Illegal,9,2,Bank_312,Panama
+TX1000000023,Brazil,3542834.368935,Cash Withdrawal,2013-01-01 23:00:00,Person_8811,Luxury Goods,Bahamas,False,Illegal,1,5,Bank_351,Panama
+TX1000000024,China,3177460.147184,Cryptocurrency,2013-01-01 00:00:00,Person_4042,Construction,Russia,True,Illegal,8,9,Bank_232,Singapore
+TX1000000025,India,3797745.140269,Cryptocurrency,2013-01-01 01:00:00,Person_1197,Textiles,Panama,False,Illegal,4,3,Bank_232,Panama
+TX1000000026,Japan,1340357.33364,Cash Withdrawal,2013-01-01 02:00:00,Person_2436,Real Estate,Bahamas,False,Illegal,6,0,Bank_434,Switzerland
+TX1000000027,South Africa,2225782.448676,Offshore Transfer,2013-01-01 03:00:00,Person_5932,Real Estate,Luxembourg,False,Illegal,3,9,Bank_210,Switzerland
+TX1000000028,Japan,4730460.799432,Cash Withdrawal,2013-01-01 04:00:00,Person_5316,Mining,Switzerland,True,Illegal,9,3,Bank_366,Singapore
+TX1000000029,USA,1619103.556486,Cash Withdrawal,2013-01-01 05:00:00,Person_7286,Mining,Bahamas,False,Illegal,3,5,Bank_434,Luxembourg
